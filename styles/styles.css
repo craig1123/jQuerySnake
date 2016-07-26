@@ -18,15 +18,22 @@ body {
 .game-window {
   width: 40em;
   height: 40em;
-  border: 10px solid yellow;
+  border: 10px solid #4caf50;
+  background-color: black;
   position: relative;
 }
 .cell-square {
   height: 5%;
   width: 5%;
-  background-color: black;
+  background: black;
   float: left;
 }
 .snake {
   background-color: yellow;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.food {
+  background-color: white;
+  border-radius: 15px;
 }
