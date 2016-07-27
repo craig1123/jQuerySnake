@@ -33,6 +33,11 @@ body {
   border: 1px solid black;
   border-radius: 5px;
 }
+.dead-snake {
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 5px;
+}
 .food {
   background-color: white;
   border-radius: 15px;
