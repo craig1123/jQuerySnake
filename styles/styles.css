@@ -9,6 +9,9 @@ body {
   height: 100%;
   position: relative;
 }
+.logo {
+  float: left
+}
 .middle {
   height: 100vh;
   display: flex;
@@ -16,8 +19,8 @@ body {
   align-items: center;
 }
 .game-window {
-  width: 40em;
-  height: 40em;
+  width: 35em;
+  height: 35em;
   border: 10px solid #4caf50;
   background-color: black;
   position: relative;
@@ -26,6 +29,7 @@ body {
   height: 5%;
   width: 5%;
   background: black;
+  /*background: url('../img/green.jpg') no-repeat;*/
   float: left;
 }
 .snake {
@@ -40,5 +44,32 @@ body {
 }
 .food {
   background-color: white;
-  border-radius: 15px;
+  border-radius: 50%;
+}
+.stats {
+  height: 70px;
+  margin: 90px auto 0px auto;
+}
+.stats h2 {
+  font-size: 29px;
+  font-family: monospace;
+}
+.score {
+  width: 4em;
+  height: 60px;
+  border: 8px solid #4caf50;
+  color: #4caf50;
+  font-size: 45px;
+  background: black;
+  margin: auto;
+  margin: 0px auto 75px auto;
+}
+.high-score {
+  width: 4em;
+  height: 60px;
+  border: 8px solid #4caf50;
+  color: #4caf50;
+  font-size: 45px;
+  background: black;
+  margin: auto;
 }
