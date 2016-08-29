@@ -10,10 +10,11 @@ body {
   position: relative;
 }
 .logo {
-  float: left
+  float: left;
+  margin: 15px 0px 0px 50px;
 }
 .middle {
-  height: 100vh;
+  height: 87vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,4 +73,8 @@ body {
   font-size: 45px;
   background: black;
   margin: auto;
+}
+.rules {
+  font-size: 29px;
+  font-family: monospace;
 }

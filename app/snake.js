@@ -2,10 +2,10 @@ $(document).ready(function() {
 
 var food = "",
     snake = ['_0_2', '_0_1', '_0_0'],
-    dir =  4;
+    dir =  4,
     score = 0,
-    highScore = 0,
-    game = 'new';
+    game = 'new',
+    highScore = 0;
 
 
     localStorage.setItem('highScore', highScore);
@@ -16,6 +16,7 @@ function setHighScore() {
     localStorage.setItem('highScore', highScore);
   }
 }
+setHighScore(); n       vvc  
 
 function myScore() {
   $(".score").text(score);
@@ -106,7 +107,7 @@ function myScore() {
 
 
   //logic for directions
-  $(document).on('keyup', function(e) {
+  $(document).on('keydown', function(e) {
     if(e.keyCode === 40 && dir !== 3) {
       dir = 1;
     }
