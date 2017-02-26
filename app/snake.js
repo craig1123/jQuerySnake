@@ -16,7 +16,7 @@ function setHighScore() {
     localStorage.setItem('highScore', highScore);
   }
 }
-setHighScore(); n       vvc  
+setHighScore(); 
 
 function myScore() {
   $(".score").text(score);
