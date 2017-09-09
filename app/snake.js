@@ -5,12 +5,13 @@ $(document).ready(function() {
         dir =  4,
         score = 0,
         game = 'new',
-        snakeHighScore = 0;
+        flag = false;
 
     var snakeGameWindow = $('.snake-game-window');
 
+    var snakeHighScore = localStorage.getItem('snakeHighScore');
     localStorage.setItem('snakeHighScore', snakeHighScore);
-    localStorage.getItem('snakeHighScore');
+
     function setHighScore() {
       if (localStorage.getItem('snakeHighScore') < score) {
         snakeHighScore = score
@@ -20,7 +21,7 @@ $(document).ready(function() {
     setHighScore();
 
     function myScore() {
-      $(".snake-score").text(score);
+      $(".snake-local-score").text(score);
       $(".snake-high-score").text(snakeHighScore);
     }
 
@@ -69,6 +70,7 @@ $(document).ready(function() {
         case 4: sCol += 1; // right
         break;
       }
+      flag = false;
       var newHead = '_'+sRow+'_'+sCol;
 
       // when head touches food, add a cell.
@@ -103,28 +105,33 @@ $(document).ready(function() {
     game = 'inProgress';
       setTimeout(function() {
         update();
-    }, 175);
+    }, 125);
   }
 
 
   //logic for directions
   $(document).on('keydown', function(e) {
-    if(e.keyCode === 40 && dir !== 3) {
-      dir = 1;
-    }
-    if(e.keyCode === 37 && dir !== 4) {
-      dir = 2;
-    }
-    if(e.keyCode === 38 && dir !== 1) {
-      dir = 3;
-    }
-    if(e.keyCode === 39 && dir !== 2) {
-      dir = 4;
-    }
+      if (!flag) {
+          if(e.keyCode === 40 && dir !== 3) {
+            dir = 1; // down
+            flag = true;
+          }
+          if(e.keyCode === 37 && dir !== 4) {
+            dir = 2; // left
+            flag = true;
+          }
+          if(e.keyCode === 38 && dir !== 1) {
+            dir = 3; // up
+            flag = true;
+          }
+          if(e.keyCode === 39 && dir !== 2) {
+            dir = 4; // right
+            flag = true;
+          }
+      }
     //start game with 'Enter'
     if (e.keyCode === 13 && game === 'new') {
       update();
-
     }
     // restart game with 'enter'
     if(e.keyCode === 13 && game === 'gameOver') {
@@ -154,4 +161,46 @@ $(document).ready(function() {
         update();
       }
     });
+
+    // handle mobile swipes
+    var touchstartX = 0;
+    var touchstartY = 0;
+    var touchendX = 0;
+    var touchendY = 0;
+    var swipeDistance = 150;
+
+    window.addEventListener('touchstart', function(e) {
+        var event = e.targetTouches[0];
+        touchstartX = event.screenX;
+        touchstartY = event.screenY;
+    }, false);
+
+    window.addEventListener('touchend', function(e) {
+        var event = e.changedTouches[0];
+        touchendX = event.screenX;
+        touchendY = event.screenY;
+        handleGesure();
+    }, false);
+
+    function handleGesure() {
+        if (touchendX + swipeDistance < touchstartX && dir !== 4 && !flag) {
+            dir = 2; // left
+            flag = true;
+        }
+        if (touchstartX + swipeDistance < touchendX && dir !== 2 && !flag) {
+            dir = 4; // right
+            flag = true;
+        }
+        if (touchendY + swipeDistance < touchstartY  && dir !== 1 && !flag) {
+            dir = 3; // up
+            flag = true;
+        }
+        if (touchstartY + swipeDistance < touchendY  && dir !== 3 && !flag) {
+            dir = 1; // down
+            flag = true;
+        }
+        if (touchendY === touchstartY && game === 'new') { // start game with a tap
+            update();
+        }
+    }
 });

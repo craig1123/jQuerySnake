@@ -14,7 +14,6 @@ body {
   font-family: monospace;
   padding: 1em;
   overflow: hidden;
-  opacity: .9;
 }
 h1 {
     font-size: 50px;
@@ -51,9 +50,10 @@ h2 {
 .snake-game-window {
   width: 35em;
   height: 35em;
-  border: 10px solid #4caf50;
+  border: 10px solid #2e8031;
   background-color: black;
   position: relative;
+  opacity: .9;
 }
 .snake-cell-square {
   height: 5%;
@@ -76,23 +76,15 @@ h2 {
   border-radius: 50%;
 }
 .snake-score {
-  width: 4em;
   height: 60px;
-  border: 8px solid #4caf50;
-  color: #4caf50;
+  border: 8px solid #2e8031;
+  color: #2e8031;
   font-size: 45px;
   background: black;
-  margin: auto;
-  margin: 0px auto 75px auto;
+  opacity: .8;
 }
-.snake-high-score {
-  width: 4em;
-  height: 60px;
-  border: 8px solid #4caf50;
-  color: #4caf50;
-  font-size: 45px;
-  background: black;
-  margin: auto;
+.snake-mobile-directions {
+    display: none;
 }
 .copyright {
     position: absolute;
@@ -102,6 +94,14 @@ h2 {
     color: white;
     left: 40%;
 }
+@media (max-width: 770px) {
+    .snake-mobile-directions {
+        display: block;
+    }
+    .snake-directions {
+        display: none;
+    }
+}
 @media (max-width: 425px) {
     .snake-logo {
         position: absolute;
@@ -110,9 +110,17 @@ h2 {
         width: 15%;
     }
     h2 {
-        font-size: 27px;
+        font-size: 22px;
+    }
+    .snake-game-window {
+        width: 100%;
+        height: 100%;
     }
     .copyright {
         display: none;
+    }
+    .snake-mobile-directions {
+        position: absolute;
+        bottom: 5px;
     }
 }

@@ -1,0 +1,15 @@
+{
+  "short_name": "Snake",
+  "name": "Snake",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#2e8031"
+}
