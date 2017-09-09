@@ -22,7 +22,7 @@ self.addEventListener('install', function(event) {
     caches.open(version)
       .then(function(cache) {
       console.log("opened cache");
-      return cache.addAll(urlsToCache_);
+      return cache.addAll(urlsToCache);
     })
   );
 });
