@@ -1,18 +1,15 @@
-'use strict';
-
 var urlsToCache = [
-    '/',
-    './img/grass.jpg',
-    './img/snake.png',
-    './img/favicon.ico',
+    './..',
+    './..img/grass.jpg',
+    './..img/snake.png',
+    './..img/favicon.ico',
     'https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js',
-    './app/snake.js',
-    './styles/styles.css',
-    './styles/base/normalize.css',
-    './styles/base/reset.css',
-    'index.html',
+    './snake.js',
+    './../styles/styles.css',
+    './../styles/base/normalize.css',
+    './../styles/base/reset.css',
+    './index.html',
 ];
-
 
 var version = 'v1';
 
