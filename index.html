@@ -1,31 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>SNAKE!</title>
+        <meta
+            name="description"
+            content="The game of snake. Eat the dot, but don't hit the wall, or eat your own tail! How long can you survive?">
+        <title>Snake | The classic snake game where you eat the dots, but watch out for the wall and yourself</title>
         <link rel="stylesheet" href="./styles/base/reset.css">
         <link rel="stylesheet" href="./styles/base/normalize.css">
         <link rel="stylesheet" href="./styles/styles.css">
+        <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon"/>
+
     </head>
     <body>
-      <div class="logo">
-        <img src="./img/logo.jpg" alt="" />
-        <div class="stats">
-          <h2>Your Score</h2>
-          <div class="score"></div>
-          <h2>High Score</h2>
-          <div class="high-score"></div>
+        <a class="snake-logo" href="https://github.com/craig1123/jQuerySnake">
+            <img src="./img/snake.png" alt="snake logo" width="100%" />
+        </a>
+        <h1 class="snake-title">Snake</h1>
+        <section class="snake-middle">
+            <div class="snake-game-window"></div>
+        </section>
+        <div class="snake-stats">
+            <div>
+                <h2>Your Score</h2>
+                <div class="snake-score"></div>
+            </div>
+            <div>
+                <h2>High Score</h2>
+                <div class="snake-high-score"></div>
+            </div>
         </div>
-      </div>
-      <h2 class="rules">Click or press enter to start. Move with arrow keys</h2>
-      <section class="middle">
-        <div class="game-window"></div>
-      </section>
-
-
+        <h2>Click or press enter to start. Move with arrow keys</h2>
+        <a class="copyright" href="http://craigswalker.com/">
+            &copy; Craig Walker 2017
+		</a>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script type="text/javascript" src="./app/snake.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-68311616-3', 'auto');
+          ga('send', 'pageview');
+
+        </script>
     </body>
 </html>

@@ -1,39 +1,40 @@
 $(document).ready(function() {
 
-var food = "",
-    snake = ['_0_2', '_0_1', '_0_0'],
-    dir =  4,
-    score = 0,
-    game = 'new',
-    highScore = 0;
+    var food = "",
+        snake = ['_0_2', '_0_1', '_0_0'],
+        dir =  4,
+        score = 0,
+        game = 'new',
+        snakeHighScore = 0;
 
+    var snakeGameWindow = $('.snake-game-window');
 
-    localStorage.setItem('highScore', highScore);
-    localStorage.getItem('highScore');
-function setHighScore() {
-  if (localStorage.getItem('highScore') < score) {
-    highScore = score
-    localStorage.setItem('highScore', highScore);
-  }
-}
-setHighScore(); 
+    localStorage.setItem('snakeHighScore', snakeHighScore);
+    localStorage.getItem('snakeHighScore');
+    function setHighScore() {
+      if (localStorage.getItem('snakeHighScore') < score) {
+        snakeHighScore = score
+        localStorage.setItem('snakeHighScore', snakeHighScore);
+      }
+    }
+    setHighScore();
 
-function myScore() {
-  $(".score").text(score);
-  $(".high-score").text(highScore);
-}
+    function myScore() {
+      $(".snake-score").text(score);
+      $(".snake-high-score").text(snakeHighScore);
+    }
 
 
   function initiateGameWindow() {
-    var gameWindow = $('.game-window');
-    gameWindow.html("");
+    snakeGameWindow.html("");
     for (var i = 0; i < 20; i++) {
       for (var j = 0; j < 20; j++) {
-        gameWindow.append("<div class=cell-square id=cell_" + i + "_" + j +"></div>");
+        snakeGameWindow.append("<div class=snake-cell-square id=snake-cell_" + i + "_" + j +"></div>");
       }
     }
-    $("#cell_0_0, #cell_0_1, #cell_0_2").addClass("snake");
+    $("#snake-cell_0_0, #snake-cell_0_1, #snake-cell_0_2").addClass("snake");
     randomFood();
+    snakeGameWindow.focus();
   }
   initiateGameWindow();
 
@@ -41,9 +42,9 @@ function myScore() {
   function randomFood() {
     var row = Math.round(Math.random()*19);
     var col = Math.round(Math.random()*19);
-    var foodCell = $('#cell_'+row+'_'+col);
+    var foodCell = $('#snake-cell_'+row+'_'+col);
         if (!foodCell.hasClass('snake')) {
-          foodCell.addClass("food");
+          foodCell.addClass("snake-food");
           food='_'+row+'_'+col;
         }
         else randomFood();
@@ -52,20 +53,20 @@ function myScore() {
   function update() {
       //removes tail
       var tail = snake.pop();
-      $('#cell'+tail).removeClass('snake');
+      $('#snake-cell'+tail).removeClass('snake');
       //add head block
       var head = snake[0];
       var rowCol = head.split('_');
-      var sRow = Number(rowCol[1]);
-      var sCol = Number(rowCol[2]);
+      var sRow = parseInt(rowCol[1], 10);
+      var sCol = parseInt(rowCol[2], 10);
       switch(dir){
-        case 1: sRow++;  // down
+        case 1: sRow += 1;  // down
         break;
-        case 2: sCol--; // left
+        case 2: sCol -= 1; // left
         break;
-        case 3: sRow--; // up
+        case 3: sRow -= 1; // up
         break;
-        case 4: sCol++; // right
+        case 4: sCol += 1; // right
         break;
       }
       var newHead = '_'+sRow+'_'+sCol;
@@ -73,7 +74,7 @@ function myScore() {
       // when head touches food, add a cell.
      if(newHead === food) {
        snake.push(tail);
-       $('#cell'+food).removeClass("food");
+       $('#snake-cell'+food).removeClass("snake-food");
        score += 1;
        setHighScore();
        randomFood();
@@ -81,10 +82,10 @@ function myScore() {
       snake.unshift(newHead);
 
       // end game if snake hits the border OR hits itself
-    if (sCol<0 || sRow<0 || sCol>19 || sRow>19 ||  $('#cell'+newHead).hasClass('snake') ){
+    if (sCol<0 || sRow<0 || sCol>19 || sRow>19 ||  $('#snake-cell'+newHead).hasClass('snake') ){
       snake.push(tail);
-      $('#cell'+tail).addClass("snake");
-      $('#cell'+snake[1]).addClass("dead-snake");
+      $('#snake-cell'+tail).addClass("snake");
+      $('#snake-cell'+snake[1]).addClass("dead-snake");
       game = 'gameOver';
       function gameOver() {
         alert("You lose!");
@@ -94,7 +95,7 @@ function myScore() {
       return;
     }
     else {
-      $('#cell'+newHead).addClass('snake');
+      $('#snake-cell'+newHead).addClass('snake');
     }
 
     myScore();
@@ -102,7 +103,7 @@ function myScore() {
     game = 'inProgress';
       setTimeout(function() {
         update();
-      }, 150);
+    }, 175);
   }
 
 
@@ -125,8 +126,8 @@ function myScore() {
       update();
 
     }
-    //restart game with 'enter'
-    if(e.keyCode === (13 || 40 || 37 || 38 || 39) && game === 'gameOver') {
+    // restart game with 'enter'
+    if(e.keyCode === 13 && game === 'gameOver') {
       snake = ["_0_2", "_0_1", "_0_0"];
       food = "";
       dir = 4;
@@ -137,7 +138,7 @@ function myScore() {
     }
   });
 
-    //Start or restart game with click
+    // Start or restart game with click
     $(document).click(function (e) {
       if(game === 'gameOver') {
         snake = ["_0_2", "_0_1", "_0_0"];
