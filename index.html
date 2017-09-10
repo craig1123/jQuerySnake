@@ -8,15 +8,14 @@
             name="description"
             content="The game of snake. Eat the dot, but don't hit the wall, or eat your own tail! How long can you survive?">
         <title>Snake | The classic snake game where you eat the dots, but watch out for the wall and yourself</title>
-        <link rel="stylesheet" href="./styles/base/reset.css">
-        <link rel="stylesheet" href="./styles/base/normalize.css">
-        <link rel="stylesheet" href="./styles/styles.css">
+        <!-- <link rel="stylesheet" href="./styles/base/normalize.css"> -->
+        <link rel="stylesheet" href="./app/styles/styles.css">
         <link rel="manifest" href="./manifest.json">
-        <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon"/>
+        <link rel="shortcut icon" href="./app/img/favicon.ico" type="image/x-icon"/>
     </head>
     <body>
         <a class="snake-logo" href="https://github.com/craig1123/jQuerySnake">
-            <img src="./img/snake.png" alt="snake logo" width="100%" />
+            <img src="./app/img/snake.png" alt="snake logo" width="100%" />
         </a>
         <h1 class="snake-title">Snake</h1>
         <section class="snake-middle">
@@ -46,7 +45,7 @@
         <script type="text/javascript" src="./app/snake.js"></script>
         <script>
             if ('serviceWorker' in navigator) {
-              navigator.serviceWorker.register('./app/serviceWorker.js').then(function(registration) {
+              navigator.serviceWorker.register('serviceWorker.js').then(function(registration) {
                 console.log('ServiceWorker registration successful with scope: ', registration.scope);
               }).catch(function(err) {
                 console.log('ServiceWorker registration failed: ', err);

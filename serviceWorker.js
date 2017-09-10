@@ -1,13 +1,11 @@
 var urlsToCache = [
-    './..',
-    './../img/grass.jpg',
-    './../img/snake.png',
-    './../img/favicon.ico',
+    './index.html',
+    './app/img/grass.jpg',
+    './app/img/snake.png',
+    './app/img/favicon.ico',
     'https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js',
-    './snake.js',
-    './../styles/styles.css',
-    './../styles/base/normalize.css',
-    './../styles/base/reset.css',
+    './app/snake.js',
+    './app/styles/styles.css',
 ];
 
 var version = 'v1';

@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     var snakeGameWindow = $('.snake-game-window');
 
-    var snakeHighScore = localStorage.getItem('snakeHighScore');
+    var snakeHighScore = localStorage.getItem('snakeHighScore') || 0;
     localStorage.setItem('snakeHighScore', snakeHighScore);
 
     function setHighScore() {
@@ -176,6 +176,7 @@ $(document).ready(function() {
     }, false);
 
     window.addEventListener('touchend', function(e) {
+        e.preventDefault();
         var event = e.changedTouches[0];
         touchendX = event.screenX;
         touchendY = event.screenY;
