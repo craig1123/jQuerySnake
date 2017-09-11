@@ -105,7 +105,7 @@ $(document).ready(function() {
     game = 'inProgress';
       setTimeout(function() {
         update();
-    }, 125);
+    }, 100);
   }
 
 
