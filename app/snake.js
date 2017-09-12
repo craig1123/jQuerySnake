@@ -5,7 +5,22 @@ $(document).ready(function() {
         dir =  4,
         score = 0,
         game = 'new',
+        timeout = 200,
         flag = false;
+
+    var speed = {
+        0: timeout,
+        5: 175,
+        10: 160,
+        15: 150
+        20: 140,
+        30: 130,
+        40: 115,
+        50: 100,
+        60: 90,
+        75: 75,
+        100: 50,
+    };
 
     var snakeGameWindow = $('.snake-game-window');
 
@@ -24,7 +39,6 @@ $(document).ready(function() {
       $(".snake-local-score").text(score);
       $(".snake-high-score").text(snakeHighScore);
     }
-
 
   function initiateGameWindow() {
     snakeGameWindow.html("");
@@ -103,9 +117,14 @@ $(document).ready(function() {
     myScore();
 
     game = 'inProgress';
-      setTimeout(function() {
+
+    if (speed[score]) {
+        timeout = speed[score]
+    }
+
+    setTimeout(function() {
         update();
-    }, 100);
+    }, timeout);
   }
 
 
