@@ -1,45 +1,42 @@
 $(document).ready(function() {
 
-    var food = "",
-        snake = ['_0_2', '_0_1', '_0_0'],
-        dir =  4,
-        score = 0,
-        game = 'new',
-        timeout = 200,
-        flag = false;
+  var food = "",
+      snake = ['_0_2', '_0_1', '_0_0'],
+      dir =  4,
+      score = 0,
+      game = 'new',
+      timeout = 200,
+      flag = false;
 
-    var speed = {
-        0: timeout,
-        5: 175,
-        10: 160,
-        15: 150,
-        20: 140,
-        30: 130,
-        40: 115,
-        50: 100,
-        60: 90,
-        75: 75,
-        100: 50,
-    };
+  var speed = {
+      0: timeout,
+      5: 175,
+      10: 160,
+      15: 150,
+      20: 140,
+      30: 130,
+      40: 115,
+      50: 100,
+      60: 90,
+      75: 75,
+      100: 50,
+  };
 
-    var snakeGameWindow = $('.snake-game-window');
+  var snakeGameWindow = $('.snake-game-window');
 
-    var snakeHighScore = localStorage.getItem('snakeHighScore') || 0;
-    localStorage.setItem('snakeHighScore', snakeHighScore);
+  var snakeHighScore = localStorage.getItem('snakeHighScore') || 0;
+  localStorage.setItem('snakeHighScore', snakeHighScore);
 
-    function setHighScore() {
-      if (localStorage.getItem('snakeHighScore') < score) {
-        snakeHighScore = score
-        localStorage.setItem('snakeHighScore', snakeHighScore);
-      }
+  function setHighScore() {
+    if (localStorage.getItem('snakeHighScore') < score) {
+      snakeHighScore = score
+      localStorage.setItem('snakeHighScore', snakeHighScore);
     }
-    setHighScore();
-
-    function myScore() {
-      $(".snake-local-score").text(score);
-      $(".snake-high-score").text(snakeHighScore);
-    }
-
+  }
+  function myScore() {
+    $(".snake-local-score").text(score);
+    $(".snake-high-score").text(snakeHighScore);
+  }
   function initiateGameWindow() {
     snakeGameWindow.html("");
     for (var i = 0; i < 20; i++) {
@@ -51,7 +48,6 @@ $(document).ready(function() {
     randomFood();
     snakeGameWindow.focus();
   }
-  initiateGameWindow();
 
   //generates random food
   function randomFood() {
@@ -127,6 +123,9 @@ $(document).ready(function() {
     }, timeout);
   }
 
+  setHighScore();
+  myScore();
+  initiateGameWindow();
 
   //logic for directions
   $(document).on('keydown', function(e) {
